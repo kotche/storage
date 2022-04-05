@@ -13,10 +13,16 @@ func main() {
 
 	file, err := st.Upload("test.txt", []byte("hello"))
 
-	if err != nil{
+	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println("it uploaded", file)
+	restoredFile, err := st.GetByID(file.ID)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("it is restored", restoredFile)
 
 }
